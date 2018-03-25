@@ -5,13 +5,16 @@ const router = express.Router();
 // Require all models
 var db = require("../models");
 
-const controller = require('../controller')
+const scrape = require('../scripts/scrape.js')
+
+const controller = require('../controller');
 
 router.get("/", controller.homePage);
+
 router.get("/saved", controller.saved);
 
 // A GET route for scraping the echojs website
-router.get("/scrape", controller.scrape);
+router.get("/scrape", scrape.scrape);
 
 // Route for getting all Articles from the db
 router.get("/articles", controller.getArticles);
